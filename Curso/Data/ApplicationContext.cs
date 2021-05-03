@@ -6,9 +6,8 @@ namespace CursoEFCore.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Data source=(localdb)\\mssqllocaldb;Initial Catalog=CursoERCore;Integrated Security=ture"
-                );
+            var connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\dev-Takeshi\\Documents\\CursoEFCore.mdf;Integrated Security=True;Connect Timeout=30";
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
