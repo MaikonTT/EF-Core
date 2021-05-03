@@ -1,12 +1,24 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace CursoEFCore
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using var db = new Data.ApplicationContext();
+            var existe = db.Database.GetPendingMigrations().Any();
+
+            if (existe)
+            {
+                Console.WriteLine("Existe migrações pendentes!");
+            }
+            else
+            {
+                Console.WriteLine("Não existe migrações pendentes!");
+            }
         }
     }
 }
