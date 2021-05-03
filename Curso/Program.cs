@@ -28,7 +28,30 @@ namespace CursoEFCore
             //InserirDadosEmMassa();
             //ConsultarDados();
             //CadastrarPedido();
-            ConsultarPedidoCarregamentoAdiantado();
+            //ConsultarPedidoCarregamentoAdiantado();
+            AtualizarDados();
+        }
+
+        private static void AtualizarDados()
+        {
+            using var db = new ApplicationContext();
+            //var cliente = db.Clientes.Find(3);
+
+            var cliente = new Cliente
+            {
+                Id = 3
+            };
+
+            var clienteDesconectado = new
+            {
+                Nome = "Cliente Desconectado Passo 3",
+                Telefone = "11912345678"
+            };
+
+            db.Attach(cliente);
+            db.Entry(cliente).CurrentValues.SetValues(clienteDesconectado);
+            //db.Clientes.Update(cliente);
+            db.SaveChanges();
         }
 
         private static void ConsultarPedidoCarregamentoAdiantado()
